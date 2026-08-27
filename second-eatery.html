@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Second Eatery — Fort Myers Carry-Out Soul Food</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Space+Mono:wght@400;700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --iron:#1B1713;
+    --iron-2:#241E18;
+    --cream:#F2E8D5;
+    --cream-dim:#E7D9BC;
+    --gold:#E29B3D;
+    --gold-dim:#B87A2A;
+    --red:#B23A2E;
+    --green:#5C7A4C;
+    --ink:#241C14;
+    --line: rgba(242,232,213,0.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--iron);
+    color:var(--cream);
+    font-family:'Karla', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  .wrap{max-width:1140px;margin:0 auto;padding:0 32px;}
+
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(27,23,19,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .navbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 32px; max-width:1140px; margin:0 auto;
+  }
+  .brandmark{display:flex; align-items:center; gap:12px;}
+  .stamp{
+    width:44px; height:44px; border-radius:50%;
+    border:2px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-weight:700; font-size:16px;
+    color:var(--gold);
+    transform:rotate(-6deg);
+    flex-shrink:0;
+  }
+  .brand-name{font-family:'Fraunces', serif; font-weight:600; font-size:19px; line-height:1.1;}
+  .brand-sub{font-family:'Space Mono', monospace; font-size:10.5px; letter-spacing:0.1em; color:var(--cream-dim); text-transform:uppercase;}
+  nav.links{display:flex; gap:28px; font-size:14px;}
+  nav.links a{text-decoration:none; color:var(--cream-dim); border-bottom:1px solid transparent;}
+  nav.links a:hover{color:var(--cream); border-color:var(--gold);}
+  .call-btn{
+    font-family:'Space Mono', monospace; font-size:13px;
+    color:var(--iron); background:var(--gold);
+    padding:10px 18px; border-radius:3px; text-decoration:none;
+    white-space:nowrap;
+  }
+  .call-btn:hover{background:var(--cream);}
+  .nav-right{display:flex; align-items:center; gap:24px;}
+  @media(max-width:760px){ nav.links{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:72px 0 80px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.85fr; gap:64px; align-items:center;
+  }
+  @media(max-width:900px){ .hero-grid{grid-template-columns:1fr; gap:48px;} }
+
+  .status-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Space Mono', monospace; font-size:12px;
+    color:var(--green); background:rgba(92,122,76,0.15);
+    border:1px solid rgba(92,122,76,0.4);
+    padding:6px 12px; border-radius:20px; margin-bottom:22px;
+  }
+  .status-dot{width:7px; height:7px; border-radius:50%; background:var(--green);}
+
+  .hero h1{
+    font-size:clamp(38px, 5.4vw, 62px);
+    line-height:1.02;
+    margin-bottom:22px;
+  }
+  .hero h1 em{
+    font-style:italic; color:var(--gold);
+  }
+  .hero p.lede{
+    font-size:18px; line-height:1.6; color:var(--cream-dim);
+    max-width:46ch; margin-bottom:32px;
+  }
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:36px;}
+  .btn-primary, .btn-secondary{
+    font-family:'Space Mono', monospace; font-size:13px;
+    text-decoration:none; padding:14px 22px; border-radius:3px;
+    display:inline-flex; align-items:center; gap:10px;
+  }
+  .btn-primary{background:var(--gold); color:var(--iron);}
+  .btn-primary:hover{background:var(--cream);}
+  .btn-secondary{border:1px solid var(--line); color:var(--cream);}
+  .btn-secondary:hover{border-color:var(--gold); color:var(--gold);}
+
+  .stat-row{display:flex; gap:36px; flex-wrap:wrap;}
+  .stat .num{font-family:'Fraunces', serif; font-size:28px; font-weight:600; color:var(--cream);}
+  .stat .label{font-family:'Space Mono', monospace; font-size:11px; color:var(--cream-dim); text-transform:uppercase; letter-spacing:0.08em;}
+
+  /* ---------- TICKET (signature element) ---------- */
+  .ticket-wrap{display:flex; justify-content:center;}
+  .ticket{
+    background:var(--cream);
+    color:var(--ink);
+    width:100%; max-width:340px;
+    padding:30px 26px 26px;
+    font-family:'Space Mono', monospace;
+    position:relative;
+    box-shadow:0 30px 60px rgba(0,0,0,0.45);
+    transform:rotate(2deg);
+  }
+  .ticket::before, .ticket::after{
+    content:"";
+    position:absolute; left:0; right:0; height:14px;
+    background-image:radial-gradient(circle at 10px 7px, var(--iron) 6px, transparent 6.5px);
+    background-size:20px 14px;
+    background-repeat:repeat-x;
+  }
+  .ticket::before{top:-7px;}
+  .ticket::after{bottom:-7px; transform:scaleY(-1);}
+  .ticket-head{text-align:center; border-bottom:1.5px dashed #8a7d5f; padding-bottom:14px; margin-bottom:14px;}
+  .ticket-head .tname{font-family:'Fraunces', serif; font-weight:700; font-size:19px;}
+  .ticket-head .tsub{font-size:10px; letter-spacing:0.12em; color:#6b6048; margin-top:4px;}
+  .ticket-row{display:flex; justify-content:space-between; font-size:12.5px; padding:6px 0; border-bottom:1px dotted #b8ab86;}
+  .ticket-row span:first-child{max-width:70%;}
+  .ticket-foot{margin-top:16px; text-align:center;}
+  .togo-stamp{
+    display:inline-block; border:2.5px solid var(--red); color:var(--red);
+    border-radius:50%; width:92px; height:92px; line-height:1.1;
+    display:flex; align-items:center; justify-content:center;
+    transform:rotate(-10deg); margin:14px auto 4px;
+    font-family:'Fraunces', serif; font-weight:700; font-size:15px;
+    letter-spacing:0.06em;
+  }
+  .ticket-num{font-size:10px; color:#6b6048; text-align:center; margin-top:8px; letter-spacing:0.08em;}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:88px 0;}
+  section.tight{padding:60px 0;}
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .section-head h2{font-size:clamp(28px,3.6vw,40px); margin-top:10px;}
+  .section-head p{color:var(--cream-dim); font-size:16px; margin-top:14px; line-height:1.6;}
+
+  /* trust strip */
+  .trust{border-bottom:1px solid var(--line);}
+  .trust .wrap{display:flex; flex-wrap:wrap; gap:40px; justify-content:space-between; padding:34px 32px;}
+  .trust-item{display:flex; gap:12px; align-items:flex-start;}
+  .trust-item .tnum{font-family:'Fraunces', serif; font-size:22px; font-weight:600;}
+  .trust-item .tlabel{font-family:'Space Mono', monospace; font-size:11px; color:var(--cream-dim); text-transform:uppercase; letter-spacing:0.06em; margin-top:2px;}
+
+  /* menu */
+  .menu-cats{display:grid; grid-template-columns:repeat(3, 1fr); gap:0 56px;}
+  @media(max-width:860px){.menu-cats{grid-template-columns:1fr; gap:40px;}}
+  .menu-cat-title{
+    font-family:'Space Mono', monospace; font-size:12px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--gold); border-bottom:1px solid var(--line);
+    padding-bottom:12px; margin-bottom:6px;
+  }
+  .menu-item{padding:16px 0; border-bottom:1px dashed var(--line);}
+  .menu-item .mname{font-family:'Fraunces', serif; font-size:17px; font-weight:600;}
+  .menu-item .mdesc{font-size:13.5px; color:var(--cream-dim); margin-top:4px; line-height:1.5;}
+  .menu-note{
+    margin-top:44px; font-family:'Space Mono', monospace; font-size:12.5px;
+    color:var(--cream-dim); border-left:2px solid var(--gold); padding-left:16px;
+  }
+
+  /* reviews */
+  .reviews{background:var(--iron-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .review-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  @media(max-width:860px){.review-grid{grid-template-columns:1fr;}}
+  .review-card{
+    background:var(--iron); border:1px solid var(--line); border-radius:4px;
+    padding:26px 24px;
+  }
+  .review-stars{color:var(--gold); font-family:'Space Mono', monospace; font-size:13px; letter-spacing:2px; margin-bottom:14px;}
+  .review-quote{font-family:'Fraunces', serif; font-size:17px; font-style:italic; line-height:1.5; margin-bottom:18px;}
+  .review-who{font-family:'Space Mono', monospace; font-size:11.5px; color:var(--cream-dim); text-transform:uppercase; letter-spacing:0.05em;}
+
+  /* visit */
+  .visit-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  @media(max-width:860px){.visit-grid{grid-template-columns:1fr;}}
+  .info-row{display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-size:14.5px;}
+  .info-row .k{color:var(--cream-dim); font-family:'Space Mono', monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:0.06em; padding-top:2px;}
+  .info-row .v{text-align:right; max-width:60%;}
+  .map-block{
+    border:1px solid var(--line); border-radius:4px; padding:34px 28px;
+    background:var(--iron-2);
+    display:flex; flex-direction:column; justify-content:space-between; min-height:280px;
+  }
+  .map-block .addr{font-family:'Fraunces', serif; font-size:22px; line-height:1.4; margin-bottom:8px;}
+  .map-block .code{font-family:'Space Mono', monospace; font-size:12px; color:var(--cream-dim); margin-bottom:24px;}
+
+  footer{padding:36px 0; text-align:center; border-top:1px solid var(--line);}
+  footer p{font-family:'Space Mono', monospace; font-size:11.5px; color:var(--cream-dim); letter-spacing:0.04em;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="brandmark">
+      <div class="stamp">SE</div>
+      <div>
+        <div class="brand-name">Second Eatery</div>
+        <div class="brand-sub">Carry-out soul food</div>
+      </div>
+    </div>
+    <nav class="links">
+      <a href="#menu">Menu</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <div class="nav-right">
+      <a class="call-btn" href="tel:+12392582304">(239) 258-2304</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="status-badge"><span class="status-dot"></span> Open now · closes 6 PM</div>
+      <h1>Soul food, <em>made to go.</em></h1>
+      <p class="lede">Fort Myers' kitchen for Marry Me Chicken, smothered pork chops, and stuffed salmon that taste like Sunday dinner. Dine in, or call ahead and we'll have it ready to go.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="tel:+12392582304">Call to order &rarr;</a>
+        <a class="btn-secondary" href="#visit">Get directions</a>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><div class="num">4.7</div><div class="label">57 Google reviews</div></div>
+        <div class="stat"><div class="num">$20&ndash;30</div><div class="label">Per person</div></div>
+        <div class="stat"><div class="num">Dine-in</div><div class="label">Also available</div></div>
+      </div>
+    </div>
+
+    <div class="ticket-wrap">
+      <div class="ticket">
+        <div class="ticket-head">
+          <div class="tname">Second Eatery</div>
+          <div class="tsub">Order to go &middot; Fort Myers, FL</div>
+        </div>
+        <div class="ticket-row"><span>Marry Me Chicken</span><span>1</span></div>
+        <div class="ticket-row"><span>Stuffed Salmon</span><span>1</span></div>
+        <div class="ticket-row"><span>Smothered Pork Chop Dinner</span><span>1</span></div>
+        <div class="ticket-row"><span>Collard Greens, side</span><span>1</span></div>
+        <div class="ticket-row"><span>Hot Lemon Pepper Wings</span><span>1</span></div>
+        <div class="ticket-foot">
+          <div class="togo-stamp">TO&nbsp;GO</div>
+          <div class="ticket-num">TICKET J5Q2 &middot; RICHARD</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap">
+    <div class="trust-item"><div><div class="tnum">4.7 / 5</div><div class="tlabel">Rating &middot; 57 reviews</div></div></div>
+    <div class="trust-item"><div><div class="tnum">Dine-in, carry-out &amp; delivery</div><div class="tlabel">Seating on site</div></div></div>
+    <div class="trust-item"><div><div class="tnum">11 AM &ndash; 6 PM</div><div class="tlabel">Daily hours</div></div></div>
+    <div class="trust-item"><div><div class="tnum">Fast food</div><div class="tlabel">Southern &amp; soul food</div></div></div>
+  </div>
+</div>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The menu</div>
+      <h2>Kitchen favorites, ready in a box.</h2>
+      <p>A short list of what Second Eatery is known for &mdash; the dishes that keep regulars calling back in.</p>
+    </div>
+
+    <div class="menu-cats">
+      <div>
+        <div class="menu-cat-title">Chicken &amp; wings</div>
+        <div class="menu-item"><div class="mname">Marry Me Chicken</div><div class="mdesc">The dish regulars order by name &mdash; ask for a side of shrimp with it.</div></div>
+        <div class="menu-item"><div class="mname">Hot Lemon Pepper Wings</div><div class="mdesc">Tossed hot, sharp with lemon pepper, no dip required.</div></div>
+        <div class="menu-item"><div class="mname">BBQ Chicken Wings</div><div class="mdesc">Sticky, smoky, and sold by the box.</div></div>
+      </div>
+      <div>
+        <div class="menu-cat-title">Seafood &amp; dinners</div>
+        <div class="menu-item"><div class="mname">Stuffed Salmon</div><div class="mdesc">A house favorite &mdash; often the first thing regulars mention.</div></div>
+        <div class="menu-item"><div class="mname">Fried Shrimp, 10 Pc Box</div><div class="mdesc">Golden and crisp, portioned for one.</div></div>
+        <div class="menu-item"><div class="mname">Chicken &amp; Shrimp Box</div><div class="mdesc">Two proteins, one box, built for sharing or not.</div></div>
+      </div>
+      <div>
+        <div class="menu-cat-title">Plates &amp; sides</div>
+        <div class="menu-item"><div class="mname">Smothered Pork Chop Dinner</div><div class="mdesc">Slow, gravy-forward, served with your pick of two sides.</div></div>
+        <div class="menu-item"><div class="mname">Turkey Wings Dinner</div><div class="mdesc">Fall-off-the-bone, Southern-braised.</div></div>
+        <div class="menu-item"><div class="mname">Collard Greens</div><div class="mdesc">Long-simmered, seasoned the old way.</div></div>
+      </div>
+    </div>
+
+    <div class="menu-note">Full menu also includes Pepper Steak Dinner and a rotating list of sides &mdash; call ahead for today's picks.</div>
+  </div>
+</section>
+
+<section id="reviews" class="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">What Fort Myers says</div>
+      <h2>57 reviews, one running theme.</h2>
+      <p>Diners keep coming back for the flavor &mdash; and for Richard, who runs the counter.</p>
+    </div>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-quote">Delivery orders come out flavorful and hot every time, with generous portions &mdash; the Marry Me Chicken is a standout.</div>
+        <div class="review-who">Local Guide, 15 reviews</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-quote">The wings are some of the best you'll find in Southwest Florida &mdash; strong enough to earn their own competition.</div>
+        <div class="review-who">Local Guide, 76 reviews</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-quote">The stuffed salmon is the go-to order, and Richard's customer service &mdash; on the phone and in person &mdash; keeps clients coming back.</div>
+        <div class="review-who">Local Guide, 38 reviews</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap visit-grid">
+    <div>
+      <div class="section-head" style="margin-bottom:24px;">
+        <div class="eyebrow">Hours &amp; contact</div>
+        <h2>Dine in, or grab it to go.</h2>
+      </div>
+      <div class="info-row"><div class="k">Phone</div><div class="v"><a href="tel:+12392582304">(239) 258-2304</a></div></div>
+      <div class="info-row"><div class="k">Service</div><div class="v">Dine-in &middot; Takeout &middot; Delivery</div></div>
+      <div class="info-row"><div class="k">Price range</div><div class="v">$20&ndash;30 per person</div></div>
+      <div class="info-row"><div class="k">Today</div><div class="v">Closes 6 PM &middot; reopens 11 AM Fri</div></div>
+      <div class="info-row"><div class="k">Category</div><div class="v">Fast food &middot; Southern &amp; soul food</div></div>
+    </div>
+
+    <div class="map-block">
+      <div>
+        <div class="addr">3204 Lincoln Blvd<br>Fort Myers, FL 33916</div>
+        <div class="code">Plus code: J5Q2+FV Fort Myers, Florida</div>
+      </div>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="https://www.google.com/maps/search/?api=1&query=3204+Lincoln+Blvd+Fort+Myers+FL+33916" target="_blank" rel="noopener">Get directions &rarr;</a>
+        <a class="btn-secondary" href="tel:+12392582304">Call ahead</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>SECOND EATERY &middot; 3204 LINCOLN BLVD, FORT MYERS, FL 33916 &middot; (239) 258-2304</p>
+</footer>
+
+</body>
+</html>
